@@ -1,0 +1,11 @@
+{
+    "firstname": "Eder",
+    "lastname": "Bigliardi",
+    "totalprice": 500,
+    "depositpaid": true,
+    "bookingdates": {
+        "checkin": "2024-12-06",
+        "checkout": "2024-12-07"
+    },
+    "additionalneeds": "Breakfast"
+}
