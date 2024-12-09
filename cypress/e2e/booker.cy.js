@@ -1,5 +1,6 @@
 // bibliotecas / imports
 import booking from '../fixtures/booking.json'
+import update from '../fixtures/update.json'
 
 describe('Booker API', () => {
 
@@ -25,6 +26,27 @@ describe('Booker API', () => {
 
     }) // termina cy
   }) // termina POST
+
+    /  // Update parcial
+    it('Patch Booking', () => {
+      cy.request({
+        method: 'PATCH',
+        url: `/booking/${Cypress.env('bookingid')}`,
+        body: update,
+        headers: {
+          Cookie: `token=${Cypress.env('token')}`
+        }
+      }).then(({ status, body }) => {
+        expect(status).to.eq(200)
+        expect(body.firstname).to.eq('Eder')
+        expect(body.lastname).to.eq('Bigliardi')
+        expect(body.totalprice).to.eq(500)
+        expect(body.depositpaid).to.eq(true)
+        expect(body.bookingdates.checkin).to.eq('2024-12-06')
+        expect(body.bookingdates.checkout).to.eq('2024-12-07')
+        expect(body.additionalneeds).to.eq('Dinner')
+      })
+    }) // termina patch
 
   it('Delete Booking', () => {
     cy.request({
