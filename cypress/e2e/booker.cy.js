@@ -22,7 +22,21 @@ describe('Booker API', () => {
       expect(body.booking.bookingdates.checkin).to.eq('2024-12-06')
       expect(body.booking.bookingdates.checkout).to.eq('2024-12-07')
       expect(body.booking.additionalneeds).to.eq('Breakfast')
+
     }) // termina cy
   }) // termina POST
+
+  it('Delete Booking', () => {
+    cy.request({
+      method: 'DELETE',
+      url: `/booking/${Cypress.env('bookingid')}`,
+      headers: {
+        Cookie: `token=${Cypress.env('token')}`
+      }
+    }).then(({ status }) => {
+      expect(status).to.eq(201)
+    })
+  }) // termina delete
+
 }) // termina describe
 

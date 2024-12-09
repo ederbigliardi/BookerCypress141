@@ -24,7 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-import loging from '../fixtures/login.json'
+import login from '../fixtures/login.json'
 
 Cypress.Commands.add('createToken', () => {
     cy.request({
